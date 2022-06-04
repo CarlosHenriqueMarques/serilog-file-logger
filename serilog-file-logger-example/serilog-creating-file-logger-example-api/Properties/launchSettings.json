@@ -1,18 +1,20 @@
 ﻿{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:37390",
-      "sslPort": 44355
+      "applicationUrl": "http://localhost:37917",
+      "sslPort": 44356
     }
   },
   "profiles": {
-    "serilog_file_logger_example": {
+    "serilog_creating_file_logger_example_api": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:7169;http://localhost:5169",
+      "launchUrl": "swagger",
+      "applicationUrl": "https://localhost:7171;http://localhost:5171",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,6 +22,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
+      "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
