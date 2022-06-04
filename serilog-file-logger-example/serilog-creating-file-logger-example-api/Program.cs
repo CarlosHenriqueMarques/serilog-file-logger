@@ -1,6 +1,15 @@
+using Serilog;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+
+//SetLogs
+Setlogging();
+
+//Add Serilog logging services.
+builder.Services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose :true));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -23,3 +32,15 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+static void Setlogging() {
+    var configuration = new ConfigurationBuilder()
+        .SetBasePath(Directory.GetCurrentDirectory())
+        .AddJsonFile("appsettings.json")
+        .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")?? "PRODUCTION"}.json",true)
+        .Build();
+    Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(configuration)
+        .Enrich.FromLogContext()
+        .WriteTo.Console()
+        .CreateLogger();
+}
