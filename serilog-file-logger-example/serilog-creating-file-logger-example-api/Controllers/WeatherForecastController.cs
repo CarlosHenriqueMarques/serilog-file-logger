@@ -21,7 +21,7 @@ namespace serilog_creating_file_logger_example_api.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
-            _logger.LogInformation("Its a log on wheather controller");
+            _logger.LogWarning("Its a log on wheather controller");
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
